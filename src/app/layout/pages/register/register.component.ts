@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AuthService } from '../../../shared/services/auth.service';
 import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -12,7 +13,7 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class RegisterComponent {
 
-  constructor( private _AuthService:AuthService, private _ToastrService: ToastrService){}
+  constructor( private _AuthService:AuthService, private _ToastrService: ToastrService, private _Router:Router){}
 
   errorMessage !: string;
 
@@ -32,7 +33,11 @@ export class RegisterComponent {
     else{
       console.log(this.registerForm.value);
       this._AuthService.sendRegister(this.registerForm.value).subscribe({
-        next: (res)=>{console.log(res)}      
+        next: (res)=>{
+          console.log(res)
+          this._ToastrService.success('Register Done Successfully');
+          this._Router.navigate(['/login'])
+        }      
       }) 
     }  
   }
