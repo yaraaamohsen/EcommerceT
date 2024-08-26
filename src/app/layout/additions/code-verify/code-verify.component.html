@@ -1,0 +1,20 @@
+<div class="w-7/12 mx-auto">
+    @if (errorMessage) {
+    <h2 class="p-4 mb-4 mt-1 text-3xl text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400"
+        role="alert">{{errorMessage}}</h2>
+
+    }
+    <h2 class=" text-main font-bold text-4xl">Enter Valid Code</h2>
+    <form class="my-3" [formGroup]="codeForm" (ngSubmit)="codeSubmit()">
+        <input id="code" type="text" class="w-full rounded-lg border-gray-500" formControlName="resetCode">
+        @if(codeForm.get('resetCode')?.errors && codeForm.get('resetCode')?.touched){
+        <div class="p-4 mb-4 mt-1 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400"
+            role="alert">
+            @if(codeForm.get('resetCode')?.errors?.['required']){
+            <p>resetCode is required</p>
+            }
+        </div>
+        }
+        <button [disabled]="codeForm.invalid" class="btn-main my-2">Send Code</button>
+    </form>
+</div>

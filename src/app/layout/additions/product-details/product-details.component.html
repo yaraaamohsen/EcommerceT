@@ -1,0 +1,25 @@
+<div class="w-9/12 mx-auto flex">
+    <div class="w-5/12">
+        <div>
+            <owl-carousel-o [options]="customOptions">
+                @for (imageSrc of images; track $index) {
+                    <ng-template carouselSlide >
+                        <img class="w-100" [src]="imageSrc">
+                    </ng-template>
+                }
+            </owl-carousel-o>
+        </div>
+    </div>
+    <div class="w-7/12 self-center">
+        <div>
+            <h2 class="font-bold size-16 w-full">{{productObj.title}}</h2>
+            <p class="text-slate-400">{{productObj.description}}</p>
+            <h6>{{productObj.category.name}}</h6>
+            <div class="flex justify-between">
+                <p>{{productObj.price}} EGP</p>
+                <p> <i class="fa-solid fa-star text-yellow-300"></i> {{productObj.ratingsAverage}}</p>
+            </div>
+            <button (click)="addToCart(productObj._id)" type="button" class="w-full text-white font-medium rounded-lg text-sm py-2.5 bg-main">Add To Cart</button>
+        </div>
+    </div>
+</div>

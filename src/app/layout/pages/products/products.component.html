@@ -1,0 +1,27 @@
+<div class="flex flex-wrap w-10/12 mx-auto gap-y-3 py-5">
+    <div class="w-full">
+        <input [(ngModel)]="searchVal" type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-6/12 mx-auto p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="search by product name" required />
+    </div>
+    @for (product of allProducts | search: searchVal; track $index) {
+        <div class="xl:w-3/12 lg:w-4/12 md:w-6/12 w-full max-sm:mx-auto max-w-sm p-1">
+            <div  class="flex justify-between flex-col bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 items-center h-full">
+                <div class="cursor-pointer" [routerLink]="['/productDetails', product._id]">
+                    <img class="rounded-t-lg w-full" [src]="product.imageCover"/>
+                    <div class="p-3">
+                       <p class="mb-3 font-normal text-main">{{product.category.name}}</p>
+                       @if(product.title){
+                           <h1 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{product.title.split(' ').slice(0,2).join(' ')}}</h1>
+                       }
+                       <div class="flex justify-between">
+                           <p>{{product.price}}</p>
+                           <p> <i class="fa-solid fa-star text-yellow-400"></i>{{product.ratingsAverage}}</p>
+                       </div>
+                    </div>
+                </div>
+                <div class="p-2 w-full">
+                    <button (click)="addToCart(product._id)" type="button" class="w-full text-white font-medium rounded-lg text-sm py-2.5 bg-main">Add To Cart</button>
+                </div>
+            </div>
+        </div>
+    }
+</div>

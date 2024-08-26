@@ -1,0 +1,18 @@
+<div class="w-7/12 mx-auto">
+    <h2 class=" text-main font-bold text-4xl">Enter Your Email</h2>
+    <form class="my-3" [formGroup]="sendEmailForm" (ngSubmit)="emailSubmit()">
+        <input id="email" type="email" class="w-full rounded-lg border-gray-500" formControlName="email">
+        @if(sendEmailForm.get('email')?.errors && sendEmailForm.get('email')?.touched){
+        <div class="p-4 mb-4 mt-1 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400"
+            role="alert">
+            @if (sendEmailForm.get('email')?.errors?.['required']) {
+            <p>Email is Required</p>
+            }
+            @else if(sendEmailForm.get('email')?.errors?.['email']) {
+            <p>email must be valid</p>
+            }
+        </div>
+        }
+        <button [disabled]="sendEmailForm.invalid" class="btn-main">send Email</button>
+    </form>
+</div>

@@ -1,0 +1,97 @@
+<div class="w-7/12 mx-auto">
+    @if (errorMessage) {
+        <h2 class="p-4 mb-4 mt-1 text-3xl text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">{{errorMessage}}</h2>
+
+    }
+    <h2 class=" text-main font-bold text-4xl">Register Now</h2>
+   <form class="my-3" [formGroup]="registerForm" (ngSubmit)="sendData()">
+        <div class="my-3">
+            <label for="name">name: </label>
+            <input id="name" type="text" class="w-full rounded-lg border-gray-500" formControlName="name">
+            @if (registerForm.get('name')?.errors && registerForm.get('name')?.touched) {
+                <div class="p-4 mb-4 mt-1 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+                    @if(registerForm.get('name')?.errors?.['required']){
+                    <p>Name is Required</p>
+                    }
+                    @else if (registerForm.get('name')?.errors?.['minlength']) {
+                    <p>Name should be more than 3 char.</p>
+                    }
+                    @else if (registerForm.get('name')?.errors?.['maxlength']) {
+                    <p>Name should be less than 20 char.</p>
+                    }
+                </div>
+                }
+        </div>
+        <div class="my-3">
+            <label for="email">Email: </label>
+            <input id="email" type="email" class="w-full rounded-lg border-gray-500" formControlName="email">
+            @if(registerForm.get('email')?.errors && registerForm.get('email')?.touched){
+                <div class="p-4 mb-4 mt-1 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+                    @if (registerForm.get('email')?.errors?.['required']) {
+                    <p>Email is Required</p>
+                    }
+                    @else if(registerForm.get('email')?.errors?.['email']) {
+                    <p>email must be valid</p>
+                    }
+                </div>
+                }
+        </div>
+        <div class="my-3">
+            <label for="phone">Phone: </label>
+            <input id="phone" type="text" class="w-full rounded-lg border-gray-500" formControlName="phone">
+            @if(registerForm.get('phone')?.errors && registerForm.get('phone')?.touched){
+                <div class="p-4 mb-4 mt-1 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+                    @if(registerForm.get('phone')?.errors?.['required']){
+                    <p>Phone is Required</p>
+                    }
+                    @else if (registerForm.get('phone')?.errors?.['pattern']) {
+                    <p>Invalid phone Number</p>
+                    }
+                </div>
+                }
+        </div>
+        <div class="my-3">
+            <label for="password">password: </label>
+            <input id="password" type="text" class="w-full rounded-lg border-gray-500" formControlName="password">
+            @if(registerForm.get('password')?.errors && registerForm.get('password')?.touched){
+                <div class="p-4 mb-4 mt-1 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+                    @if(registerForm.get('password')?.errors?.['required']){
+                    <p>Password is Required</p>
+                    }
+                    @else if (registerForm.get('password')?.errors?.['pattern']) {
+                            <p>Password must be from 8 to 12 characters which contain:
+                                <br>- Capital Letter
+                                <br>- Small Letter
+                                <br>- Special Character ($!%*&#64;?&)
+                                <br>- Number</p>
+                    }
+                </div>
+                }
+        </div>
+        <div class="my-3">
+            <label for="rePassword">rePassword: </label>
+            <input id="rePassword" type="tel" class="w-full rounded-lg border-gray-500" formControlName="rePassword">
+            @if(registerForm.get('rePassword')?.errors && registerForm.get('rePassword')?.touched){
+                <div class="p-4 mb-4 mt-1 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+                    @if(registerForm.get('rePassword')?.errors?.['required']){
+                    <p>rePassword is Required</p>
+                    }
+                    @else if (registerForm.get('rePassword')?.errors?.['pattern']) {
+                            <p>Password must be from 8 to 12 characters which contain:
+                                <br>- Capital Letter
+                                <br>- Small Letter
+                                <br>- Special Character ($!%*&#64;?&)
+                                <br>- Number</p>
+                    }
+                </div>
+            }
+            @if (registerForm.errors?.['passwordMatched'] && registerForm.get('password')?.touched &&
+            registerForm.get('rePassword')?.touched) {
+            <div class="p-4 mb-4 mt-1 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+                <p>Password Not Matched</p>
+            </div>
+            }
+        </div>
+        <button [disabled]="registerForm.invalid" class="btn-main block ms-auto ">Register</button>
+   </form>
+</div>

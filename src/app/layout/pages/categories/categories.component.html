@@ -1,0 +1,14 @@
+<div class="container md:px-16 mx-auto flex flex-wrap gap-y-3">
+    @for (cat of categories; track $index) {
+        <div class="max-w-sm 2xl:w-3/12 lg:w-4/12 md:w-6/12 md:p-6 items-center mx-auto">
+            <div (click)="catDetails(cat._id)" class="cursor-pointer flex flex-col justify-between bg-white border min-h-full border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+                <img class="rounded-t-lg object-cover h-80 w-full" [src]="cat.image" alt=""/>
+                <div class="p-5">
+                    <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white text-center">{{cat.name}}</h5>
+                </div>
+            </div>
+        </div>   
+    }
+</div>
+
+

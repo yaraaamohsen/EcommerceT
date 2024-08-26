@@ -1,0 +1,10 @@
+{
+    "Home": "Home",
+    "Cart": "Cart",
+    "Products" : "Products",
+    "Categorries" : "Categorries",
+    "Brands" : "Brands",
+    "Login" : "Login",
+    "Logout" : "Logout",
+    "Register" : "Register"
+}
