@@ -23,8 +23,8 @@
         <owl-carousel-o [options]="customOptionsCat">
             @for (category of categoriesArr; track $index) {
                 <ng-template carouselSlide >
-                <img class="w-full h-48" [src]="category.image">
-                <h6>{{category.name}}</h6>
+                <img class="w-full lg:h-80 xl:h-48" [src]="category.image">
+                <h6 class="text-center font-bold py-4">{{category.name}}</h6>
                 </ng-template>
             }
         </owl-carousel-o>

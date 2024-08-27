@@ -52,7 +52,7 @@
         </div>
         <div class="my-3">
             <label for="password">password: </label>
-            <input id="password" type="text" class="w-full rounded-lg border-gray-500" formControlName="password">
+            <input id="password" type="password" class="w-full rounded-lg border-gray-500" formControlName="password">
             @if(registerForm.get('password')?.errors && registerForm.get('password')?.touched){
                 <div class="p-4 mb-4 mt-1 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
                     @if(registerForm.get('password')?.errors?.['required']){
@@ -70,7 +70,7 @@
         </div>
         <div class="my-3">
             <label for="rePassword">rePassword: </label>
-            <input id="rePassword" type="tel" class="w-full rounded-lg border-gray-500" formControlName="rePassword">
+            <input id="rePassword" type="password" class="w-full rounded-lg border-gray-500" formControlName="rePassword">
             @if(registerForm.get('rePassword')?.errors && registerForm.get('rePassword')?.touched){
                 <div class="p-4 mb-4 mt-1 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
                     @if(registerForm.get('rePassword')?.errors?.['required']){

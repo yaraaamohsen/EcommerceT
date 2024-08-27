@@ -1,4 +1,4 @@
-<div class="w-7/12 mx-auto">
+<div class="md:w-7/12 max-md:px-8 mx-auto">
     @if (errorMessage) {
         <h2 class="p-4 mb-4 mt-1 text-3xl text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">{{errorMessage}}</h2>
 
@@ -21,7 +21,7 @@
         </div>
         <div class="my-3">
             <label for="password">password: </label>
-            <input id="password" type="text" class="w-full rounded-lg border-gray-500" formControlName="password">
+            <input id="password" type="password" class="w-full rounded-lg border-gray-500" formControlName="password">
             @if(loginForm.get('password')?.errors && loginForm.get('password')?.touched){
                 <div class="p-4 mb-4 mt-1 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
                     @if(loginForm.get('password')?.errors?.['required']){
