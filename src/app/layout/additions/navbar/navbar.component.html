@@ -36,7 +36,6 @@
                     <a [routerLink]="['brands']" routerLinkActive="text-main font-bold"
                         class="block py-2 px-3 text-gray-500 md:p-0 dark:text-white" aria-current="page">{{'Brands' | translate}} </a>
                 </li>
-
             </ul>
             }
             <ul class="ms-auto font-medium items-center mx-3 flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
@@ -48,16 +47,22 @@
                     <i class="fa-brands fa-youtube"></i>
                 </li>
                 @if (!isLogin) {
-                <li class="">
+                <li>
                     <a [routerLink]="['login']" routerLinkActive="text-main font-bold"
                         class="block py-2 px-3 text-gray-500 md:p-0 dark:text-white" aria-current="page">{{'Login' | translate}}</a>
                 </li>
-                <li class="">
+                <li>
                     <a [routerLink]="['register']" routerLinkActive="text-main font-bold"
                         class="block py-2 px-3 text-gray-500 md:p-0 dark:text-white" aria-current="page">{{'Register' | translate}}</a>
                 </li>
                 }
                 @else {
+                <li>
+                    <button [routerLink]="['cart']" type="button" class="relative inline-flex items-center px-1.5 py-2.5 text-sm font-medium text-center text-white rounded-lg">
+                    <i class="fa-solid fa-cart-shopping text-slate-700 text-xl"></i>
+                    <div class="absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-main border-2 border-white rounded-full -top-2 -end-2 dark:border-gray-900">{{noOfCartItems}}</div>
+                    </button>
+                </li>
                 <li>
                     <a (click)="logout()" class="cursor-pointer block py-2 px-3 text-gray-500 md:p-0 dark:text-white" aria-current="page">{{'Logout' | translate}}</a>
                 </li>

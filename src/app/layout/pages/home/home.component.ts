@@ -86,7 +86,10 @@ export class HomeComponent {
     this._CartService.addProduct(pId).subscribe({
       next: (res) => {
         this._ToastrService.success(res.message);
-        // this._CartService.hamada();
+        this._CartService.noOfCartItems.next(res.numOfCartItems);
+        if(typeof localStorage !== 'undefined'){
+          localStorage.setItem('noOfCartItems' , this._CartService.noOfCartItems.getValue());
+        }      
       }
     })
   }

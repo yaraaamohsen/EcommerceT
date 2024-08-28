@@ -18,10 +18,10 @@ export class CartComponent {
   emptyCart !: string; 
   cartId !: string;
   constructor(private _Router:Router ,private _CartService:CartService, private _ToastrService:ToastrService){}
-  
+
   ngOnInit(): void{
     if(typeof localStorage !== 'undefined'){
-      localStorage.setItem('currentPage' , '/cart')
+      localStorage.setItem('currentPage' , '/cart');
     }
 
     this._CartService.getCartApi().subscribe({
@@ -29,6 +29,12 @@ export class CartComponent {
         this.myCart = res;
         this.cartData= this.myCart.data;
         this.cartId = res.data._id;
+        console.log(res.numOfCartItems);
+        this._CartService.noOfCartItems.next(res.numOfCartItems);
+        console.log(this._CartService.noOfCartItems.getValue());
+        if(typeof localStorage !== 'undefined'){
+          localStorage.setItem('noOfCartItems' , this._CartService.noOfCartItems.getValue());
+        }
       }
     })  
   }
@@ -62,6 +68,10 @@ export class CartComponent {
         this._ToastrService.success('cart deleted successfully');
         this.myCart = res;
         this._Router.navigate(['/home']);
+        this._CartService.noOfCartItems.next(0);
+        if(typeof localStorage !== 'undefined'){
+          localStorage.setItem('noOfCartItems' , '0');
+        }
       }
     })
   }
