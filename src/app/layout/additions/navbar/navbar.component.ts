@@ -49,6 +49,7 @@ export class NavbarComponent {
     if(typeof localStorage !== 'undefined'){
       console.log( localStorage.getItem('noOfCartItems'));
     }
+    this._CartService.noOfCartItems.subscribe( (res)=>{this.noOfCartItems = res;})
   }
 
   logout(){

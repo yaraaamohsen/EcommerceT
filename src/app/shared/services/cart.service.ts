@@ -31,12 +31,4 @@ export class CartService {
   clearCart(pId: string) : Observable<any>{
     return this._HttpClient.delete(`${environment.baseURL}/api/v1/cart`)
   }
-
-   hamada(){
-     this.getCartApi().subscribe((res)=>{
-       this.noOfCartItems.next(res.numOfCartItems);
-       console.log(this.noOfCartItems.getValue());
-       this.noOfCartItems.getValue();
-   })
- }
 }

@@ -28,6 +28,8 @@ export class HomeComponent {
   searchVal: string = '';
 
   ngOnInit(): void {
+
+
     if (typeof localStorage != 'undefined') {
       localStorage.setItem('currentPage', '/home');
     }

@@ -29,14 +29,12 @@ export class CartComponent {
         this.myCart = res;
         this.cartData= this.myCart.data;
         this.cartId = res.data._id;
-        console.log(res.numOfCartItems);
         this._CartService.noOfCartItems.next(res.numOfCartItems);
-        console.log(this._CartService.noOfCartItems.getValue());
         if(typeof localStorage !== 'undefined'){
           localStorage.setItem('noOfCartItems' , this._CartService.noOfCartItems.getValue());
         }
       }
-    })  
+    })
   }
 
   updatedCount(currentCount: number, pId: string){

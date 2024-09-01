@@ -35,7 +35,7 @@
             <input [(ngModel)]="searchVal" type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-6/12 mx-auto p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="search by product name" required />
         </div>
         @for (product of productsArr | search: searchVal; track $index) {
-            <div class="2xl:w-2/12 xl:w-3/12 lg:w-4/12 md:w-6/12 w-full max-sm:mx-auto max-w-sm p-1">
+            <div class="2xl:w-2/12 xl:w-3/12 lg:w-4/12 md:w-6/12 w-10/12 mx-auto p-1">
                 <div  class="flex justify-between flex-col bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 items-center h-full">
                     <div class="cursor-pointer" [routerLink]="['/productDetails', product._id]">
                         <img class="rounded-t-lg w-full" [src]="product.imageCover"/>
