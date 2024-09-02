@@ -43,7 +43,6 @@ export class ReqOrdComponent {
         this._CartService.clearCart(this.cartId).subscribe({
           next: (res)=>{console.log(res)}
         })
-        this._Router.navigate(['/home']);
       })  
     })
   }
