@@ -30,16 +30,13 @@ export class CartComponent {
         this.cartData= this.myCart.data;
         this.cartId = res.data._id;
         this._CartService.noOfCartItems.next(res.numOfCartItems);
-        if(typeof localStorage !== 'undefined'){
-          localStorage.setItem('noOfCartItems' , this._CartService.noOfCartItems.getValue());
-        }
       }
     })
   }
 
   updatedCount(currentCount: number, pId: string){
     if(currentCount <= 0){
-      this.removeItem(pId)    
+      this.removeItem(pId)  
     }
     else{
       this._CartService.updateQuantity(currentCount.toString(), pId).subscribe({
@@ -57,6 +54,7 @@ export class CartComponent {
       this._ToastrService.warning('item cleared');
       this.myCart = res;
       this.cartData= res.data;
+      this._CartService.noOfCartItems.next(res.numOfCartItems)
     })
   }
 

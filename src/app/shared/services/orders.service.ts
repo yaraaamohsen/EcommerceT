@@ -10,7 +10,7 @@ export class OrdersService {
   constructor(private _HttpClient: HttpClient) { }
 
   sendOrder(cartId: string, data: any): Observable<any>{
-    return this._HttpClient.post(`${environment.baseURL}/api/v1/orders/checkout-session/${cartId}?url=http://localhost:4200`, 
+    return this._HttpClient.post(`${environment.baseURL}/api/v1/orders/checkout-session/${cartId}?url=https://ecommerce-t-yaraaamohsens-projects.vercel.app/`, 
       {shippingAddress: data}
     )
   }

@@ -16,7 +16,7 @@ import { TranslateModule } from '@ngx-translate/core';
 export class NavbarComponent {
   constructor(private _CartService: CartService, private _flowbiteService: FlowbiteService, private _AuthService:AuthService, private _Router:Router, private _MyTranslateService: MyTranslateService) {}
   
-  noOfCartItems: any = 0;
+  noOfCartItems !: number;
   isLogin !: boolean;
 
   ngOnInit(): void {
@@ -32,23 +32,6 @@ export class NavbarComponent {
       }
     })
 
-    if(typeof localStorage !== 'undefined'){
-      if(localStorage.getItem('userToken') !== null){
-        this.noOfCartItems = localStorage.getItem('noOfCartItems');
-      }
-    }
-
-    this._CartService.noOfCartItems.subscribe(count => {
-      if (count !== null) {
-        this.noOfCartItems = count;
-      }
-    })
-  }
-
-  afterRender(){
-    if(typeof localStorage !== 'undefined'){
-      console.log( localStorage.getItem('noOfCartItems'));
-    }
     this._CartService.noOfCartItems.subscribe( (res)=>{this.noOfCartItems = res;})
   }
 

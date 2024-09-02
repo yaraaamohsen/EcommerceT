@@ -28,8 +28,6 @@ export class HomeComponent {
   searchVal: string = '';
 
   ngOnInit(): void {
-
-
     if (typeof localStorage != 'undefined') {
       localStorage.setItem('currentPage', '/home');
     }
@@ -40,6 +38,10 @@ export class HomeComponent {
 
     this._CategoriesService.getAllCategories().subscribe({
       next: (res) => { this.categoriesArr = res.data },
+    })
+
+    this._CartService.getCartApi().subscribe( (res)=>{
+      this._CartService.noOfCartItems.next(res.numOfCartItems)
     })
   }
 
@@ -89,9 +91,6 @@ export class HomeComponent {
       next: (res) => {
         this._ToastrService.success(res.message);
         this._CartService.noOfCartItems.next(res.numOfCartItems);
-        if(typeof localStorage !== 'undefined'){
-          localStorage.setItem('noOfCartItems' , this._CartService.noOfCartItems.getValue());
-        }      
       }
     })
   }

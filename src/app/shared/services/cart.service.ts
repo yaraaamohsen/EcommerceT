@@ -8,7 +8,7 @@ import { environment } from '../../environment/base';
 })
 export class CartService {
 
-  noOfCartItems : BehaviorSubject<any> = new BehaviorSubject(null);
+  noOfCartItems : BehaviorSubject<number> = new BehaviorSubject(0);
 
   constructor(private _HttpClient:HttpClient) { }
 

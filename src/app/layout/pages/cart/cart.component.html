@@ -57,14 +57,21 @@
                             </td>
                         </tr>
                     }
+                    @empty {
+                        <tr>
+                            <td colspan="5" class="text-center">
+                                <img class="mx-auto w-9/12" src="assets/images/empty-shopping-cart.jpg" alt="Empty Cart">
+                            </td>                        
+                        </tr>
+                    }
                 </tbody>
             </table>
         </div>
-        <a class="text-2xl"><span class="text-2xl font-extrabold">Total Amount:</span> {{myCart.data.totalCartPrice}} L.E.</a>
-        <button [routerLink]= "['/reqOrd', cartId]" class="ms-auto block rounded-lg bg-main px-4 py-2 mt-2 text-white" >Request Order</button>
-        <button (click)="deleteCart(myCart.data._id)" class="ms-auto block rounded-lg bg-red-600 px-4 py-2 mt-2 text-white">Clear Cart</button>
+        @if(myCart.data.products.length> 0){
+            <a class="text-2xl"><span class="text-2xl font-extrabold">Total Amount:</span> {{myCart.data.totalCartPrice}} L.E.</a>
+            <button [routerLink]= "['/reqOrd', cartId]" class="ms-auto block rounded-lg bg-main px-4 py-2 mt-2 text-white" >Request Order</button>
+            <button (click)="deleteCart(myCart.data._id)" class="ms-auto block rounded-lg bg-red-600 px-4 py-2 mt-2 text-white">Clear Cart</button>
+        }
+        
     </div>
 }
-
-
-
